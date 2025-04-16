@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Graciella Reese Landicho</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0e6f6;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff66b2;
+      margin-top: 50px;
+      position: relative;
+    }
+    h1::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background-image: url('https://example.com/bear-heart.gif'); /* Replace with your bear gif URL */
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: bearAnimation 5s infinite;
+    }
+    @keyframes bearAnimation {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+    .message {
+      font-size: 1.5em;
+      color: #333;
+      margin-top: 30px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    button {
+      background-color: #ff66b2;
+      color: white;
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff3385;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">Can I be your boyfriend?</h1>
+  <div class="message">
+    <p>Click "Yes" or "No" below!</p>
+  </div>
+  <div class="buttons">
+    <button onclick="showMessage('yes')">Yes</button>
+    <button onclick="moveNoButton()">No</button>
+  </div>
+
+  <script>
+    function showMessage(answer) {
+      const messageElement = document.querySelector('.message');
+      const yesButton = document.querySelector('button:nth-of-type(1)');
+      const noButton = document.querySelector('button:nth-of-type(2)');
+      const title = document.getElementById('main-title'); // Target the <h1> by ID
+
+      if (answer === 'yes') {
+        title.remove(); // Remove the title
+
+        messageElement.innerHTML = '<p>Matthew 19:6 - So they are no longer two, but one. No human being must separate, then, what God has joined together.</p>';
+
+        yesButton.classList.add('hidden');
+        noButton.classList.add('hidden');
+
+        const continueButton = document.createElement('button');
+        continueButton.innerHTML = 'Continue';
+        continueButton.onclick = showFinalMessage;
+        document.querySelector('.buttons').appendChild(continueButton);
+      } else {
+        messageElement.innerHTML = '<p>Oh no! Maybe next time!</p>';
+      }
+    }
+
+    function moveNoButton() {
+      const button = document.querySelector('button:nth-of-type(2)');
+      const randomX = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+      const randomY = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+
+      button.style.position = 'absolute';
+      button.style.left = `${randomX}px`;
+      button.style.top = `${randomY}px`;
+    }
+
+    function showFinalMessage() {
+      const messageElement = document.querySelector('.message');
+      messageElement.innerHTML = '<p>Graciella Reese Landicho, you\'re the girl I want to be with. You\'re beautiful and smart. You truly care about me and our relationship. I know that things can get hard between us, but despite that we always manage to fix things between us and we are always glued together. Mahal ko, let\'s grow together as people and love each other forever and ever. Graciella I choose you. I love you always. - Love, Jean Patrick Valbuena</p>';
+
+      const continueButton = document.querySelector('.buttons button');
+      continueButton.remove();
+    }
+  </script>
+</body>
+</html>
